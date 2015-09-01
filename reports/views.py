@@ -1,6 +1,7 @@
 # encoding: utf8
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render_to_response
 from django.core.urlresolvers import reverse
 from reports.models import Report
 
@@ -55,12 +56,18 @@ def send(request):
             'error_message': "No hay conexión a internet, intente más tarde",
         })
 	else:
-		print >>sys.stderr, "POST request response: ", r
+		print >>sys.stderr, "POST request response: ", r.status_code
+		if r.status_code == 200:
+			code = 0
+		else:
+			code = 1
 		#print >>sys.stderr, consult_date
-		return HttpResponseRedirect(reverse('reports:results'))
+		return HttpResponseRedirect(reverse('reports:results', args=(rep.id, code)))
 	finally:
 		pass
 
 
-def results(request):
-	return render(request, 'reports/results.html')
+def results(request, rep_id, status):
+	# return render(request, 'reports/results.html')
+	r = get_object_or_404(Report, pk=rep_id)
+	return render_to_response('reports/results.html', {'report': r, 'status': status})

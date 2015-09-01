@@ -3,12 +3,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="{% static 'reports/style.css' %}">
-		<title>Formulario Psicologo</title>
 		<meta charset="utf-8">
+		<link rel="stylesheet" href="{% static 'reports/style.css' %}">		
 		<link rel="stylesheet" href="{% static 'reports/jquery-ui.css' %}">
-		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<script src="{% static 'reports/js/jquery-1.10.2.js' %}"></script>
+		<script src="{% static 'reports/js/jquery-ui.js' %}"></script>
+		<title>Formulario Psicologo</title>
 		<script>
 			$(function() {
 				var availableTags = [
@@ -49,11 +49,11 @@
 		{% if error_message %}<p><strong>ERROR: {{ error_message }}</strong></p>{% endif %}
 		<form action="{% url 'reports:send' %}" method="POST">
 			{% csrf_token %}
-			<label for="doctor">Nombre Doctor: </label> <input id="doctor" name="nombre_dr" type="Text" autofocus required></input>	
+			<label for="doctor">Nombre del Doctor: </label> <input id="doctor" name="nombre_dr" type="Text" autofocus required></input>	
 			<br><br>
-			<label>Fecha de consulta: </label><input type="date" name="fecha" required>
+			<label>Fecha de la consulta: </label><input type="date" name="fecha" required>
 			<br><br>
-			<label>Nombre Paciente: </label> <input id="paciente" name="nombre_pac" type="Text" required></input>	
+			<label>Nombre del Paciente: </label> <input id="paciente" name="nombre_pac" type="Text" required></input>	
 			<br><br>
 			<label>Estado del paciente: </label> <input name="estado_pac" type="Text" required></input>
 			<br><br>
