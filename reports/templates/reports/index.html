@@ -1,0 +1,67 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="{% static 'reports/style.css' %}">
+		<title>Formulario Psicologo</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="{% static 'reports/jquery-ui.css' %}">
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<script>
+			$(function() {
+				var availableTags = [
+				  "ActionScript",
+				  "AppleScript",
+				  "Asp",
+				  "BASIC",
+				  "C",
+				  "C++",
+				  "Clojure",
+				  "COBOL",
+				  "ColdFusion",
+				  "Erlang",
+				  "Fortran",
+				  "Groovy",
+				  "Haskell",
+				  "Java",
+				  "JavaScript",
+				  "Lisp",
+				  "Perl",
+				  "PHP",
+				  "Python",
+				  "Ruby",
+				  "Scala",
+				  "Scheme"
+				];
+				$( "#doctor" ).autocomplete({
+				  source: availableTags
+				});
+				$( "#paciente" ).autocomplete({
+				  source: availableTags
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h2>Generar un reporte psicológico</h2>
+		{% if error_message %}<p><strong>ERROR: {{ error_message }}</strong></p>{% endif %}
+		<form action="{% url 'reports:send' %}" method="POST">
+			{% csrf_token %}
+			<label for="doctor">Nombre Doctor: </label> <input id="doctor" name="nombre_dr" type="Text" autofocus required></input>	
+			<br><br>
+			<label>Fecha de consulta: </label><input type="date" name="fecha" required>
+			<br><br>
+			<label>Nombre Paciente: </label> <input id="paciente" name="nombre_pac" type="Text" required></input>	
+			<br><br>
+			<label>Estado del paciente: </label> <input name="estado_pac" type="Text" required></input>
+			<br><br>
+			<label>Obervaciones: </label><br> <textarea name="comentarios" rows="10" cols="40" required></textarea>
+			<br><br>
+			<label>Sugerencias: </label><br> <textarea name="sugerencias" rows="10" cols="40" required></textarea>
+			<br><br>
+			<input type="Submit" name="Enviar formulario">
+		</form>
+	</body>
+</html>
