@@ -8,39 +8,22 @@
 		<link rel="stylesheet" href="{% static 'reports/jquery-ui.css' %}">
 		<script src="{% static 'reports/js/jquery-1.10.2.js' %}"></script>
 		<script src="{% static 'reports/js/jquery-ui.js' %}"></script>
+		<script src="{% static 'reports/js/tag-it.min.js' %}" type="text/javascript" charset="utf-8"></script>
+		<link href="{% static 'reports/css/jquery.tagit.css' %}" rel="stylesheet" type="text/css">
 		<title>Formulario Psicologo</title>
 		<script>
 			$(function() {
-				var availableTags = [
-				  "ActionScript",
-				  "AppleScript",
-				  "Asp",
-				  "BASIC",
-				  "C",
-				  "C++",
-				  "Clojure",
-				  "COBOL",
-				  "ColdFusion",
-				  "Erlang",
-				  "Fortran",
-				  "Groovy",
-				  "Haskell",
-				  "Java",
-				  "JavaScript",
-				  "Lisp",
-				  "Perl",
-				  "PHP",
-				  "Python",
-				  "Ruby",
-				  "Scala",
-				  "Scheme"
-				];
 				$( "#doctor" ).autocomplete({
-				  source: availableTags
+				  source: "http://localhost:8000/api/search/doctors/",
+				  minLength: 2
 				});
 				$( "#paciente" ).autocomplete({
-				  source: availableTags
+				  source: "http://localhost:8000/api/search/patients/",
+				  minLength: 2
 				});
+				$("#status").tagit({
+			        autocomplete: {delay: 0, minLength: 2, source: "http://localhost:8000/api/search/tags/"}
+			    });
 			});
 		</script>
 	</head>
@@ -51,12 +34,11 @@
 			{% csrf_token %}
 			<label for="doctor">Nombre del Doctor: </label> <input id="doctor" name="nombre_dr" type="Text" autofocus required></input>	
 			<br><br>
-			<label>Fecha de la consulta: </label><input type="date" name="fecha" required>
+			<label>Fecha de la consulta: </label><input type="date" name="fecha" value="2015-09-01" required>
 			<br><br>
 			<label>Nombre del Paciente: </label> <input id="paciente" name="nombre_pac" type="Text" required></input>	
 			<br><br>
-			<label>Estado del paciente: </label> <input name="estado_pac" type="Text" required></input>
-			<br><br>
+			<label>Estado del paciente: </label> <input name="estado_pac" id="status" type="Text" required></input>
 			<label>Obervaciones: </label><br> <textarea name="comentarios" rows="10" cols="40" required></textarea>
 			<br><br>
 			<label>Sugerencias: </label><br> <textarea name="sugerencias" rows="10" cols="40" required></textarea>

@@ -13,4 +13,4 @@ class Report(models.Model):
 	consult_date = models.CharField(max_length=50)
 	patient_state = models.CharField(max_length=200)
 	observ = models.TextField()
-	suggest = models.CharField(max_length=500)
+	suggest = models.TextField()
