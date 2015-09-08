@@ -98,8 +98,8 @@ def send(request):
 		}
 	# El envío de la notificación es común para los reportes
 	try:
-		r = requests.post(url, data=json.dumps(payload))
-		#r = requests.post(url, headers=headers, data=json.dumps(payload))
+		#r = requests.post(url, data=json.dumps(payload))
+		r = requests.post(url, headers=headers, data=json.dumps(payload))
 	except requests.exceptions.ConnectionError:
 		if report_type == "psicologico":
 			return render(request, 'reports/psychological.html', {
