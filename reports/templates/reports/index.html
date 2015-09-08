@@ -14,11 +14,11 @@
 		<script>
 			$(function() {
 				$( "#doctor" ).autocomplete({
-				  source: "http://localhost:8000/api/search/doctors/",
+				  source: "https://tataserver.herokuapp.com/api/search/doctors/",
 				  minLength: 2
 				});
 				$( "#paciente" ).autocomplete({
-				  source: "http://localhost:8000/api/search/patients/",
+				  source: "https://tataserver.herokuapp.com/api/search/patients/",
 				  minLength: 2
 				});
 				$("#status").tagit({
