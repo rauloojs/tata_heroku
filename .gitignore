@@ -61,5 +61,5 @@ venv
 *.pyc
 staticfiles
 
-tata_server/local_settings.py
+tata_server/local_settings.*
 *.sqlite3
