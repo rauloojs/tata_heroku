@@ -67,3 +67,11 @@ img {
         filter: grayscale(0%);
     }
 }
+
+#psy-title {
+    border-bottom: 5px solid #8B6AC4;
+}
+
+#nut-title {
+    border-bottom: 5px solid #00BA67;
+}
