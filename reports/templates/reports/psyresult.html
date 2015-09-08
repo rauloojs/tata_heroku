@@ -1,0 +1,53 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="{% static 'reports/style.css' %}">
+		<script src="{% static 'reports/js/jquery-1.10.2.js' %}"></script>
+		<script>
+			$(function() {
+				$( "#succeded" ).hide();
+				$( "#succeded" ).slideDown("slow");
+			});
+		</script>
+		<title>Reporte psicológico enviado</title>
+	</head>
+	<body>
+		<h1>Reporte psicológico creado con éxito</h1>
+		<a href="{% url 'reports:psychological' %}"><button type="button">Generar otro reporte</button></a>
+		<a href="{% url 'reports:index' %}"><button type="button">Volver al inicio</button></a>
+		<br><br>
+		{% if not status %}<div id="succeded"><strong>El familiar del paciente ha sido notificado con éxito.</strong></div>
+		{% else %}<div id="succeded"><strong>Hubo un error al intentar notificar al familiar del paciente.</strong></div>
+		{% endif %}
+		<br>
+		<table style="width:80%">
+			<tr>
+				<td>Fecha del reporte:</td>
+				<td>{{ report.report.consult_date }}</td> 
+			</tr>
+			<tr>
+				<td>Nombre del doctor:</td>
+				<td>{{ report.report.doc_name }}</td> 
+			</tr>
+			<tr>
+				<td>Nombre del paciente:</td>
+				<td>{{ report.report.patient_name }}</td> 
+			</tr>
+			<tr>
+				<td>Estado del paciente:</td>
+				<td>{{ report.patient_state }}</td> 
+			</tr>
+			<tr>
+				<td>Obeservaciones</td>
+				<td>{{ report.report.observ }}</td> 
+			</tr>
+			<tr>
+				<td>Sugerencias</td>
+				<td> {{ report.suggest }} </td> 
+			</tr>
+		</table>
+	</body>
+</html>

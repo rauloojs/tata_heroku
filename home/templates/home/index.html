@@ -1,0 +1,16 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+		<link rel="stylesheet" href="{% static 'reports/style.css' %}">		
+		<title>Bienvenido</title>
+</head>
+<body>
+    
+   <h2>Bienvenido</h2>
+   <h2>El Tata</h2>
+   <a href="{% url 'reports:index' %}"><button type="button">Generar un reporte</button></a>
+</body>
+</html>
