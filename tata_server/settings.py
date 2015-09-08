@@ -102,8 +102,7 @@ USE_TZ = True
 
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '../tata_server/static')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, '../tata_server/static')
 
 # # Allow all host hosts/domain names for this site
 ALLOWED_HOSTS = ['*']
