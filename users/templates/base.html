@@ -13,9 +13,7 @@
 
 	<body>
 
-	<h2>¡Bienvenido {{ user.first_name }} {{ user.last_name }}!</h2>
-	<a href="{% url 'reports:psychological' %}"><input type="Submit" value="Reporte psicológico"></a>
-	<a href="{% url 'reports:nutritional' %}"><input type="Submit" value="Reporte nutricional"></a>
-
+	{% block content %}{% endblock %}
+	
 	</body>
 </html

@@ -26,6 +26,7 @@ SECRET_KEY = '-61h!(!!==_1-nk9aj!h42_jecjd(ol7#_pi=x7u%n2lqty+mk'
 DEBUG = False
 
 ALLOWED_HOSTS = []
+AUTH_PROFILE_MODULE = "users.UserProfile"
 
 
 # Application definition
@@ -40,6 +41,7 @@ INSTALLED_APPS = (
     'reports',
     'api',
     'home',
+    'users',
     'rest_framework',
 )
 

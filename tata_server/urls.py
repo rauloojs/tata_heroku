@@ -16,10 +16,16 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from home import views
+from django.contrib.auth.views import login, logout
+ 
+
 
 urlpatterns = [
     url(r'^$', 'home.views.index'),
-    url('^', include('django.contrib.auth.urls')),
+    url(r'^accounts/login/$',  login),
+    url(r'^accounts/logout/$', logout),
+    url(r'^accounts/profile/$', 'users.views.profile'),
+    #url('^', include('django.contrib.auth.urls')),
 	url(r'^reports/', include('reports.urls', namespace="reports")),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include( 'api.urls' ) ),

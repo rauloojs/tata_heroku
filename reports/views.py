@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.core.urlresolvers import reverse
 from reports.models import Report, PsyReport, NutReport
+from django.contrib.auth.decorators import login_required
 
 import json
 import requests
@@ -11,8 +12,9 @@ import sys
 
 
 # Create your views here.
-def index(request):
-	return render(request, 'reports/index.html')
+@login_required
+def index(request, username):
+	return render_to_response('reports/index.html', {'user': request.user})
 
 def psychological(request):
 	return render(request, 'reports/psychological.html')
