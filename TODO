@@ -1,0 +1,18 @@
+- Conexion a internet
+- Campos obligatorios
+- Autocompletado
+- Notificación no enviada
+- Errores 404
+- Campos predeterminados
+- Validar que el autocompletado restringe los datos
+
+
+Distribución linux Ubuntu 14.04
+Repositorio Github
+Python
+Django
+Django REST Framework
+Requests
+
+
+heroku addons:create heroku-postgresql

@@ -19,6 +19,7 @@ from home import views
 
 urlpatterns = [
     url(r'^$', 'home.views.index'),
+    url('^', include('django.contrib.auth.urls')),
 	url(r'^reports/', include('reports.urls', namespace="reports")),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include( 'api.urls' ) ),
