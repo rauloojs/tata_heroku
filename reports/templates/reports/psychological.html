@@ -12,7 +12,7 @@
 		<link href="{% static 'reports/css/jquery.tagit.css' %}" rel="stylesheet" type="text/css">
 		<title>Formulario Psicologo</title>
 		<script>
-			$(function() {
+			$(document).ready( function() {
 				$( "#doctor" ).autocomplete({
 				  source: "https://tataserver.herokuapp.com/api/search/doctors/",
 				  minLength: 2
@@ -38,7 +38,7 @@
 			<input type="hidden" name="form_type" value="psicologico">
 			<label for="doctor">Nombre del Doctor: </label> <input id="doctor" name="nombre_dr" type="Text" autofocus required></input>	
 			<br><br>
-			<label>Fecha de la consulta: </label><input type="date" name="fecha" value="2015-09-01" required>
+			<label>Fecha de la consulta: </label><input id="datePicker" type="date" name="fecha" value="{{ v_date|date:"Y-m-d" }}" required>
 			<br><br>
 			<label>Nombre del Paciente: </label> <input id="paciente" name="nombre_pac" type="Text" required></input>	
 			<br><br>

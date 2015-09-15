@@ -11,6 +11,12 @@
     
    <h2>Bienvenido</h2>
    <h2>El Tata</h2>
-   <a href="{% url 'login' %}"><button type="button">Ingresar</button></a>
+   {% if not logged %}
+   		<a href="{% url 'login' %}"><button type="button">Ingresar</button></a>
+   {% else %}
+   		<a href="{% url 'logout' %}"><button type="button">Salir</button></a>
+   		<a href="{% url 'reports:index' user.username %}"><button type="button">Generar reporte</button></a>
+   {% endif %}
+
 </body>
 </html>

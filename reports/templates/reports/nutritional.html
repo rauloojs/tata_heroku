@@ -37,7 +37,7 @@
 			{% csrf_token %}
 			<tr><td><label for="doctor">Nombre del Doctor: </label></td> <td><input id="doctor" name="nombre_dr" type="Text" autofocus required></input></td>	</tr>
 			
-			<tr><td><label>Fecha de la consulta: </label></td><td><input type="date" name="fecha" value="2015-09-01" required></input></td></tr>
+			<tr><td><label>Fecha de la consulta: </label></td><td><input type="date" name="fecha" value="{{ v_date|date:"Y-m-d" }}" required></input></td></tr>
 			
             <tr><td><label>Nombre del Paciente: </label></td> <td><input id="paciente" name="nombre_pac" type="Text" required></input></td>	</tr>
 

@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 import json
 import requests
 import sys
-
+import datetime
 
 # Create your views here.
 @login_required
@@ -18,11 +18,11 @@ def index(request, username):
 
 @login_required
 def psychological(request, username):
-	return render(request, 'reports/psychological.html')
+	return render_to_response('reports/psychological.html', {'user': request.user, 'v_date': datetime.datetime.now()})
 
 @login_required
 def nutritional(request, username):
-	return render(request, 'reports/nutritional.html')
+	return render_to_response('reports/nutritional.html', {'user': request.user, 'v_date': datetime.datetime.now()})
 
 @login_required
 def send(request):
