@@ -22,8 +22,8 @@ from django.contrib.auth.views import login, logout
 
 urlpatterns = [
     url(r'^$', 'home.views.index'),
-    url(r'^accounts/login/$',  login),
-    url(r'^accounts/logout/$', logout),
+    url(r'^accounts/login/$',  login, name="login"),
+    url(r'^accounts/logout/$', logout, name="logout"),
     url(r'^accounts/profile/$', 'users.views.profile'),
     #url('^', include('django.contrib.auth.urls')),
 	url(r'^reports/', include('reports.urls', namespace="reports")),

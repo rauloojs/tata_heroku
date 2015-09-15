@@ -27,7 +27,7 @@
 <body>
     
    <h2 id="nut-title">Generar un reporte nutricional</h2>
-   <a href="{% url 'reports:index' %}"><button type="button">Volver al inicio</button></a>
+   <a href="{% url 'reports:index' user.username %}"><button type="button">Volver al inicio</button></a>
 
 	{% if error_message %}<p><strong>ERROR: {{ error_message }}</strong></p>{% endif %}
 		<form action="{% url 'reports:send' %}" method="POST">

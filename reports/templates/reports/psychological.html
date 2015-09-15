@@ -29,7 +29,7 @@
 	</head>
 	<body>
 		<h2 id="psy-title">Generar un reporte psicológico</h2>
-		<a href="{% url 'reports:index' %}"><button type="button">Volver al inicio</button></a>
+		<a href="{% url 'reports:index' user.username %}"><button type="button">Volver al inicio</button></a>
 		<br>
 		<br>
 		{% if error_message %}<p><strong>ERROR: {{ error_message }}</strong></p>{% endif %}

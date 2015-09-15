@@ -16,10 +16,10 @@ import sys
 def index(request, username):
 	return render_to_response('reports/index.html', {'user': request.user})
 
-def psychological(request):
+def psychological(request, username):
 	return render(request, 'reports/psychological.html')
 
-def nutritional(request):
+def nutritional(request, username):
 	return render(request, 'reports/nutritional.html')
 
 def send(request):
