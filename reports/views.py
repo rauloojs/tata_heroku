@@ -76,11 +76,14 @@ def send(request):
 		weight = request.POST.get('peso', "")
 		height = request.POST.get('talla', "")
 		pressure = request.POST.get('presion', "")
-		risk_factors = request.POST.get('fac_riesgo', "")
+		
+		imc = request.POST.get('masa', "")
+		glucosa = request.POST.get('glucosa', "")
+		suggest = request.POST.get('sugerencias', "")
+		
 		appetite = request.POST.get('est_apetito', "")
-		diet = request.POST.get('dieta', "")
 
-		nut = NutReport(report=rep, weight=weight, height=height, pressure=pressure, risk_factors=risk_factors, appetite=appetite, diet=diet)
+		nut = NutReport(report=rep, weight=weight, height=height, pressure=pressure, imc=imc, glucosa=glucosa, suggest=suggest, appetite=appetite)
 		nut.save()
 
 		# Payload del reporte psicologico
@@ -95,9 +98,10 @@ def send(request):
 		            "peso": weight,
 		            "talla": height,
 		            "presion": pressure,
-		            "fac_riesgo": risk_factors,
+		            "imc": imc,
+		            "glucosa": glucosa,
+		            "sugerencias": suggest,
 		            "est_apetito": appetite,
-		            "dieta": diet
 		          },
 		          "registration_ids": [
 		            "APA91bHDXfzISMoo6OfqhhODnU7TeNzqCxeE7lYZHhdI801wazh1e7vbITZVTqwKU5avNW0myInlZW3Aat3S8gzqawN9G5fQEkMVNvqkDHRRYt1IDsFrPuc"

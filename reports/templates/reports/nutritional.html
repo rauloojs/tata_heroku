@@ -33,7 +33,7 @@
 				});
 			});
 		</script>
-		<script>document.getElementById("date").value = new Date().toJSON().slice(0,10)</script>
+		
 	</head>
 	<body>
 
@@ -81,7 +81,7 @@
                                 {% if error_message %}<p><strong>ERROR: {{ error_message }}</strong></p>{% endif %}
                                 <form action="{% url 'reports:send' %}" method="POST">
                                     {% csrf_token %}
-                                    <input type="hidden" name="form_type" value="psicologico">
+                                    <input type="hidden" name="form_type" value="nutricional">
                                   <input id="paciente" name="nombre_pac" type="Text" placeholder="Nombre del paciente" autofocus required></input>	
                                     <br>
                                   <input type="date" name="fecha" id="date" required></input>
@@ -108,7 +108,7 @@
                                     <br>
                                   <input id="doctor" name="nombre_dr" type="Text" placeholder= "Nombre de doctor"  required></input><br><br>	
                                   <ul class="actions">
-                                        <li><input type="Submit" class="special" value="Enviar reporte psicológico" /></li>
+                                        <li><input type="Submit" class="special" value="Enviar reporte nutricional" /></li>
                                     </ul>
                                     
                                 </form>

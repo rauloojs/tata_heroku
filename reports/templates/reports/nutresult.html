@@ -25,16 +25,12 @@
 		<br>
 		<table style="width:80%">
 			<tr>
-				<td>Fecha del reporte:</td>
-				<td>{{ report.report.consult_date }}</td> 
-			</tr>
-			<tr>
-				<td>Nombre del doctor:</td>
-				<td>{{ report.report.doc_name }}</td> 
-			</tr>
-			<tr>
 				<td>Nombre del paciente:</td>
 				<td>{{ report.report.patient_name }}</td> 
+			</tr>
+			<tr>
+				<td>Fecha del reporte:</td>
+				<td>{{ report.report.consult_date }}</td> 
 			</tr>
 			<tr>
 				<td>Peso</td>
@@ -45,24 +41,32 @@
 				<td>{{ report.height }}</td> 
 			</tr>
 			<tr>
+				<td>IMC</td>
+				<td>{{ report.imc }}</td> 
+			</tr>
+			<tr>
 				<td>Presión</td>
 				<td>{{ report.pressure }}</td> 
 			</tr>
 			<tr>
-				<td>Factores de riesgo</td>
-				<td>{{ report.risk_factors }}</td> 
+				<td>Glucosa</td>
+				<td>{{ report.glucosa }}</td> 
 			</tr>
 			<tr>
 				<td>Estimación de apetito</td>
 				<td>{{ report.appetite }}</td> 
 			</tr>
 			<tr>
-				<td>Dieta</td>
-				<td>{{ report.diet }}</td> 
+				<td>Evolucion</td>
+				<td>{{ report.report.observ }}</td> 
 			</tr>
 			<tr>
-				<td>Obeservaciones</td>
-				<td>{{ report.report.observ }}</td> 
+				<td>Sugerencias</td>
+				<td>{{ report.report.suggest }}</td> 
+			</tr>
+			<tr>
+				<td>Nombre del doctor:</td>
+				<td>{{ report.report.doc_name }}</td> 
 			</tr>
 
 		</table>
