@@ -1,18 +1,29 @@
 {% load staticfiles %}
 
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 	<head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="{% static 'reports/style.css' %}">		
+		<title>Reporte Psicologico</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="{% static 'reports/assets/css/main.css' %}" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        
+        <meta charset="utf-8">
 		<link rel="stylesheet" href="{% static 'reports/jquery-ui.css' %}">
 		<script src="{% static 'reports/js/jquery-1.10.2.js' %}"></script>
 		<script src="{% static 'reports/js/jquery-ui.js' %}"></script>
 		<script src="{% static 'reports/js/tag-it.min.js' %}" type="text/javascript" charset="utf-8"></script>
 		<link href="{% static 'reports/css/jquery.tagit.css' %}" rel="stylesheet" type="text/css">
-		<title>Formulario Psicologo</title>
+		<title>Formulario Nutricional</title>
 		<script>
-			$(document).ready( function() {
+			$(function() {
 				$( "#doctor" ).autocomplete({
 				  source: "https://tataserver.herokuapp.com/api/search/doctors/",
 				  minLength: 2
@@ -21,33 +32,96 @@
 				  source: "https://tataserver.herokuapp.com/api/search/patients/",
 				  minLength: 2
 				});
-				$("#status").tagit({
-			        autocomplete: {delay: 0, minLength: 2, source: "https://tataserver.herokuapp.com/api/search/tags/"}
-			    });
 			});
 		</script>
 	</head>
 	<body>
-		<h2 id="psy-title">Generar un reporte psicológico</h2>
-		<a href="{% url 'reports:index' user.username %}"><button type="button">Volver al inicio</button></a>
-		<br>
-		<br>
-		{% if error_message %}<p><strong>ERROR: {{ error_message }}</strong></p>{% endif %}
-		<form action="{% url 'reports:send' %}" method="POST">
-			{% csrf_token %}
-			<input type="hidden" name="form_type" value="psicologico">
-			<label for="doctor">Nombre del Doctor: </label> <input id="doctor" name="nombre_dr" type="Text" autofocus required></input>	
-			<br><br>
-			<label>Fecha de la consulta: </label><input id="datePicker" type="date" name="fecha" value="{{ v_date|date:"Y-m-d" }}" required>
-			<br><br>
-			<label>Nombre del Paciente: </label> <input id="paciente" name="nombre_pac" type="Text" required></input>	
-			<br><br>
-			<label>Estado del paciente: </label> <input name="estado_pac" id="status" type="Text" required></input>
-			<label>Obervaciones: </label><br> <textarea name="observaciones" rows="10" cols="40" required></textarea>
-			<br><br>
-			<label>Sugerencias: </label><br> <textarea name="sugerencias" rows="10" cols="40" required></textarea>
-			<br><br>
-			<input type="Submit" value="Enviar reporte psicológico">
-		</form>
+
+		<!-- Header -->
+			<section id="header">
+				<header>
+					<span class="image avatar"><img src="{% static 'reports/images/avatar.jpg' %}" alt="" /></span>
+					<h1 id="logo"><a href="#">Iliana López</a></h1>
+					<p>Médico especialista<br />
+					</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="#one" class="active">Generar reporte</a></li>
+                        						<li><a href="#"> </a></li>
+                        </ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+				</footer>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<!-- Four -->
+						<section id="one">
+                        
+								<div class="container">
+									<h3 id="psy-title">Generar un reporte psicológico</h3>
+                                <a href="{% url 'reports:index' user.username %}"><div class="12u">
+                                    <ul class="actions">
+                                        <li><input type="reset" value="Volver a inicio" /></li>
+                                    </ul>
+                                </div></a>
+
+                                {% if error_message %}<p><strong>ERROR: {{ error_message }}</strong></p>{% endif %}
+                                <form action="{% url 'reports:send' %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="form_type" value="psicologico">
+                                  <input id="paciente" name="nombre_pac" type="Text" placeholder="Nombre del paciente" autofocus required></input>	
+                                    <br>
+                                  <input type="date" name="fecha" id="date" required></input>
+                                  <script>document.getElementById("date").value = new Date().toJSON().slice(0,10)</script>
+                                    <br><br>
+                                  <input name="estado_pac" id="status" type="Text" placeholder= "Diagnóstico" required></input>
+                                    <br>
+                                    <textarea name="observaciones" rows="6" placeholder= "Evolución" required></textarea>
+                                    <br>
+                                  <textarea name="sugerencias" rows="6"  placeholder= "Se sugiere" required></textarea>
+                                    <br>
+                                  <input id="doctor" name="nombre_dr" type="Text" placeholder= "Nombre de doctor"  required></input><br><br>	
+                                  <ul class="actions">
+                                        <li><input type="Submit" class="special" value="Enviar reporte psicológico" /></li>
+                                    </ul>
+                                    
+                                </form>
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'reports/assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'reports/assets/js/jquery.scrollzer.min.js' %}"></script>
+			<script src="{% static 'reports/assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'reports/assets/js/skel.min.js' %}"></script>
+			<script src="{% static 'reports/assets/js/util.js' %}"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="{% static 'reports/assets/js/main.js' %}"></script>
+
 	</body>
 </html>

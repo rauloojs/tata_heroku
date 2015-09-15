@@ -1,9 +1,21 @@
 {% load staticfiles %}
 
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-<head>
-	<meta charset="utf-8">
+	<head>
+		<title>Reporte Nutricional</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        
+        <meta charset="utf-8">
 		<link rel="stylesheet" href="{% static 'reports/style.css' %}">		
 		<link rel="stylesheet" href="{% static 'reports/jquery-ui.css' %}">
 		<script src="{% static 'reports/js/jquery-1.10.2.js' %}"></script>
@@ -23,39 +35,109 @@
 				});
 			});
 		</script>
-</head>
-<body>
-    
-   <h2 id="nut-title">Generar un reporte nutricional</h2>
-   <a href="{% url 'reports:index' user.username %}"><button type="button">Volver al inicio</button></a>
+	</head>
+	<body>
 
-	{% if error_message %}<p><strong>ERROR: {{ error_message }}</strong></p>{% endif %}
-		<form action="{% url 'reports:send' %}" method="POST">
-    <!-- Campos por default en el formulario (Dice Jordy que no debe ir esto)-->
-    		<input type="hidden" name="form_type" value="nutricional">
-            <table width="400">
-			{% csrf_token %}
-			<tr><td><label for="doctor">Nombre del Doctor: </label></td> <td><input id="doctor" name="nombre_dr" type="Text" autofocus required></input></td>	</tr>
-			
-			<tr><td><label>Fecha de la consulta: </label></td><td><input type="date" name="fecha" value="{{ v_date|date:"Y-m-d" }}" required></input></td></tr>
-			
-            <tr><td><label>Nombre del Paciente: </label></td> <td><input id="paciente" name="nombre_pac" type="Text" required></input></td>	</tr>
+		<!-- Header -->
+			<section id="header">
+				<header>
+					<span class="image avatar"><img src="images/avatar.jpg" alt="" /></span>
+					<h1 id="logo"><a href="#">Iliana López</a></h1>
+					<p>Médico especialista<br />
+					</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="#one" class="active">Generar reporte</a></li>
+						<li><a href="#two"> </a></li>
+						
 
-            <tr><td><label>Peso: </label></td> <td><input name="peso" id="peso" type="number" required></input></td> </tr>
-            <tr><td><label>Talla: </label></td><td><input name="talla" type="number" required></input></td></tr>
-            <tr><td><label>Presión: </label></td> <td><input name="presion" type="number" required></input></td> </tr>
-            <tr><td><label>Factores de riesgo: </label></td></tr> <tr><td> <textarea name="fac_riesgo" rows="10" cols="40" required></textarea></td> </tr>
-            <tr><td><label>Estimación de apetito: </label></td></tr> <tr><td><textarea name="est_apetito" rows="10" cols="40" required></textarea></td></tr>
-            
-            <tr><td><label>Dieta: </label></td></tr> <tr><td><textarea name="dieta" rows="10" cols="40" required></textarea></td></tr>
-            <tr><td><label>Observaciones: </label></td></tr> <tr><td><textarea name="observaciones" rows="10" cols="40" required></textarea></td></tr>
-			<br><br>
-			<tr><td><input type="Submit" value="Enviar reporte nutricional"></td></tr>
-		</form>
-    
-    
-</body>
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+				</footer>
+			</section>
 
+		<!-- Wrapper -->
+			<div id="wrapper">
 
+				<!-- Main -->
+					<div id="main">
+						<!-- Four -->
+						<section id="one">
+                        
+								<div class="container">
+									<h3 id="psy-title">Generar un reporte psicológico</h3>
+                                <a href="{% url 'reports:index' %}"><div class="12u">
+                                    <ul class="actions">
+                                        <li><input type="reset" value="Volver a inicio" /></li>
+                                    </ul>
+                                </div></a>
 
+                                {% if error_message %}<p><strong>ERROR: {{ error_message }}</strong></p>{% endif %}
+                                <form action="{% url 'reports:send' %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="form_type" value="psicologico">
+                                  <input id="paciente" name="nombre_pac" type="Text" placeholder="Nombre del paciente" autofocus required></input>	
+                                    <br>
+                                  <input type="date" name="fecha" id="date" required></input>
+                                  <script>document.getElementById("date").value = new Date().toJSON().slice(0,10)</script>
+                                    <br><br>
+                                  <input name="peso" id="peso" type="number" placeholder="Peso Kg"required></input>
+                                                                    <br>
+                                  <br>
+            <input name="talla" type="number" placeholder="Talla Cm" required></input>
+                                              <br>
+                                              <br>
+            <input name="presion" type="Text" placeholder="Tensión arterial mmHg" required></input>
+                                              <br>
+            <input name="masa" type="Text" placeholder="Indice de masa corporal kg/m²"required></input>
+                                              <br>
+            <input name="glucosa" type="Text" placeholder="mg/dL" required></input>
+                                              <br>
+           <!-- <label>Factores de riesgo: </label> tr><td> <textarea name="fac_riesgo" rows="10" cols="40" required></textarea>-->
+            <input name="est_apetito" type="Text" placeholder="Estimación de apetito"required></input>
+                                    <br>
+                                    <textarea name="observaciones" rows="6" placeholder= "Evolución" required></textarea>
+                                    <br>
+                                  <textarea name="sugerencias" rows="6"  placeholder= "Se sugiere" required></textarea>
+                                    <br>
+                                  <input id="doctor" name="nombre_dr" type="Text" placeholder= "Nombre de doctor"  required></input><br><br>	
+                                  <ul class="actions">
+                                        <li><input type="Submit" class="special" value="Enviar reporte psicológico" /></li>
+                                    </ul>
+                                    
+                                </form>
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+			</div>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollzer.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>
