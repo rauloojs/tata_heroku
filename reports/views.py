@@ -6,6 +6,8 @@ from django.core.urlresolvers import reverse
 from reports.models import Report, PsyReport, NutReport
 from django.contrib.auth.decorators import login_required
 
+from django.template import RequestContext
+
 import json
 import requests
 import sys
@@ -18,11 +20,11 @@ def index(request, username):
 
 @login_required
 def psychological(request, username):
-	return render_to_response('reports/psychological.html', {'user': request.user, 'v_date': datetime.datetime.now()})
+	return render_to_response('reports/psychological.html', {'user': request.user, 'v_date': datetime.datetime.now()}, context_instance=RequestContext(request))
 
 @login_required
 def nutritional(request, username):
-	return render_to_response('reports/nutritional.html', {'user': request.user, 'v_date': datetime.datetime.now()})
+	return render_to_response('reports/nutritional.html', {'user': request.user, 'v_date': datetime.datetime.now()}, context_instance=RequestContext(request))
 
 @login_required
 def send(request):
@@ -135,7 +137,7 @@ def results(request, rep_id, status):
 
 	if report_type == "psicologico":
 		r = get_object_or_404(PsyReport, pk=r.id)
-		return render_to_response('reports/psyresult.html', {'report': r, 'status': status, 'user': request.user})
+		return render_to_response('reports/psyresult.html', {'report': r, 'status': status, 'user': request.user}, context_instance=RequestContext(request))
 	elif report_type == "nutricional":
 		r = get_object_or_404(NutReport, pk=r.id)
-		return render_to_response('reports/nutresult.html', {'report': r, 'status': status, 'user': request.user})
+		return render_to_response('reports/nutresult.html', {'report': r, 'status': status, 'user': request.user}, context_instance=RequestContext(request))

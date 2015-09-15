@@ -21,7 +21,6 @@
 		<script src="{% static 'reports/js/jquery-ui.js' %}"></script>
 		<script src="{% static 'reports/js/tag-it.min.js' %}" type="text/javascript" charset="utf-8"></script>
 		<link href="{% static 'reports/css/jquery.tagit.css' %}" rel="stylesheet" type="text/css">
-
 		<script>
 			$(document).ready( function() {
 				$( "#doctor" ).autocomplete({
@@ -34,6 +33,7 @@
 				});
 			});
 		</script>
+		<script>document.getElementById("date").value = new Date().toJSON().slice(0,10)</script>
 	</head>
 	<body>
 
@@ -126,8 +126,8 @@
 					</section>
 
 			</div>
-			</div>
-			<!-- Scripts -->
+
+		<!-- Scripts -->
 			<script src="{% static 'reports/assets/js/jquery.scrollzer.min.js' %}"></script>
 			<script src="{% static 'reports/assets/js/jquery.scrolly.min.js' %}"></script>
 			<script src="{% static 'reports/assets/js/skel.min.js' %}"></script>

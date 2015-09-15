@@ -1,0 +1,70 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="{% static 'reports/style.css' %}">
+		<script src="{% static 'reports/js/jquery-1.10.2.js' %}"></script>
+		<script>
+			$(function() {
+				$( "#succeded" ).hide();
+				$( "#succeded" ).slideDown("slow");
+			});
+		</script>
+		<title>Reporte nutricional enviado</title>
+	</head>
+	<body>
+		<h1>Reporte nutricional creado con éxito</h1>
+		<a href="{% url 'reports:psychological' user.username %}"><button type="button">Generar otro reporte</button></a>
+		<a href="{% url 'reports:index' user.username %}"><button type="button">Volver al inicio</button></a>
+		<br><br>
+		{% if status == '0' %}<div id="succeded"><strong>El familiar del paciente ha sido notificado con éxito.</strong></div>
+		{% else %}<div id="succeded"><strong>Hubo un error al intentar notificar al familiar del paciente.</strong></div>
+		{% endif %}
+		<br>
+		<table style="width:80%">
+			<tr>
+				<td>Fecha del reporte:</td>
+				<td>{{ report.report.consult_date }}</td> 
+			</tr>
+			<tr>
+				<td>Nombre del doctor:</td>
+				<td>{{ report.report.doc_name }}</td> 
+			</tr>
+			<tr>
+				<td>Nombre del paciente:</td>
+				<td>{{ report.report.patient_name }}</td> 
+			</tr>
+			<tr>
+				<td>Peso</td>
+				<td>{{ report.weight }}</td> 
+			</tr>
+			<tr>
+				<td>Talla</td>
+				<td>{{ report.height }}</td> 
+			</tr>
+			<tr>
+				<td>Presión</td>
+				<td>{{ report.pressure }}</td> 
+			</tr>
+			<tr>
+				<td>Factores de riesgo</td>
+				<td>{{ report.risk_factors }}</td> 
+			</tr>
+			<tr>
+				<td>Estimación de apetito</td>
+				<td>{{ report.appetite }}</td> 
+			</tr>
+			<tr>
+				<td>Dieta</td>
+				<td>{{ report.diet }}</td> 
+			</tr>
+			<tr>
+				<td>Obeservaciones</td>
+				<td>{{ report.report.observ }}</td> 
+			</tr>
+
+		</table>
+	</body>
+</html>
