@@ -16,10 +16,10 @@
 	</head>
 	<body>
 		<h1>Reporte nutricional creado con éxito</h1>
-		<a href="{% url 'reports:psychological' %}"><button type="button">Generar otro reporte</button></a>
-		<a href="{% url 'reports:index' %}"><button type="button">Volver al inicio</button></a>
+		<a href="{% url 'reports:psychological' user.username %}"><button type="button">Generar otro reporte</button></a>
+		<a href="{% url 'reports:index' user.username %}"><button type="button">Volver al inicio</button></a>
 		<br><br>
-		{% if not status %}<div id="succeded"><strong>El familiar del paciente ha sido notificado con éxito.</strong></div>
+		{% if status == '0' %}<div id="succeded"><strong>El familiar del paciente ha sido notificado con éxito.</strong></div>
 		{% else %}<div id="succeded"><strong>Hubo un error al intentar notificar al familiar del paciente.</strong></div>
 		{% endif %}
 		<br>

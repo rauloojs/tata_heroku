@@ -16,12 +16,15 @@ import sys
 def index(request, username):
 	return render_to_response('reports/index.html', {'user': request.user})
 
+@login_required
 def psychological(request, username):
 	return render(request, 'reports/psychological.html')
 
+@login_required
 def nutritional(request, username):
 	return render(request, 'reports/nutritional.html')
 
+@login_required
 def send(request):
 
 	# Obtenemos los campos comunes entre reportes
@@ -123,7 +126,7 @@ def send(request):
 		pass
 	
 
-
+@login_required
 def results(request, rep_id, status):
 	# return render(request, 'reports/results.html')
 	
@@ -132,7 +135,7 @@ def results(request, rep_id, status):
 
 	if report_type == "psicologico":
 		r = get_object_or_404(PsyReport, pk=r.id)
-		return render_to_response('reports/psyresult.html', {'report': r, 'status': status})
+		return render_to_response('reports/psyresult.html', {'report': r, 'status': status, 'user': request.user})
 	elif report_type == "nutricional":
 		r = get_object_or_404(NutReport, pk=r.id)
-		return render_to_response('reports/nutresult.html', {'report': r, 'status': status})
+		return render_to_response('reports/nutresult.html', {'report': r, 'status': status, 'user': request.user})
