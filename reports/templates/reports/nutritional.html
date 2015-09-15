@@ -12,19 +12,18 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="{% static 'reports/assets/css/main.css' %}" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
         
         <meta charset="utf-8">
-		<link rel="stylesheet" href="{% static 'reports/style.css' %}">		
 		<link rel="stylesheet" href="{% static 'reports/jquery-ui.css' %}">
 		<script src="{% static 'reports/js/jquery-1.10.2.js' %}"></script>
 		<script src="{% static 'reports/js/jquery-ui.js' %}"></script>
 		<script src="{% static 'reports/js/tag-it.min.js' %}" type="text/javascript" charset="utf-8"></script>
 		<link href="{% static 'reports/css/jquery.tagit.css' %}" rel="stylesheet" type="text/css">
-		<title>Formulario Nutricional</title>
+
 		<script>
-			$(function() {
+			$(document).ready( function() {
 				$( "#doctor" ).autocomplete({
 				  source: "https://tataserver.herokuapp.com/api/search/doctors/",
 				  minLength: 2
@@ -41,7 +40,7 @@
 		<!-- Header -->
 			<section id="header">
 				<header>
-					<span class="image avatar"><img src="images/avatar.jpg" alt="" /></span>
+					<span class="image avatar"><img src="{% static 'reports/images/avatar.jpg' %}" alt="" /></span>
 					<h1 id="logo"><a href="#">Iliana López</a></h1>
 					<p>Médico especialista<br />
 					</p>
@@ -49,10 +48,8 @@
 				<nav id="nav">
 					<ul>
 						<li><a href="#one" class="active">Generar reporte</a></li>
-						<li><a href="#two"> </a></li>
-						
-
-					</ul>
+                        						<li><a href="#"> </a></li>
+                        </ul>
 				</nav>
 				<footer>
 					<ul class="icons">
@@ -74,8 +71,8 @@
 						<section id="one">
                         
 								<div class="container">
-									<h3 id="psy-title">Generar un reporte psicológico</h3>
-                                <a href="{% url 'reports:index' %}"><div class="12u">
+									<h3 id="psy-title">Generar un reporte nutricional</h3>
+                                <a href="{% url 'reports:index' user.username %}"><div class="12u">
                                     <ul class="actions">
                                         <li><input type="reset" value="Volver a inicio" /></li>
                                     </ul>
@@ -130,14 +127,14 @@
 
 			</div>
 			</div>
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollzer.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
+			<!-- Scripts -->
+			<script src="{% static 'reports/assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'reports/assets/js/jquery.scrollzer.min.js' %}"></script>
+			<script src="{% static 'reports/assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'reports/assets/js/skel.min.js' %}"></script>
+			<script src="{% static 'reports/assets/js/util.js' %}"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+			<script src="{% static 'reports/assets/js/main.js' %}"></script>
 
 	</body>
 </html>

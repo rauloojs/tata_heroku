@@ -21,9 +21,8 @@
 		<script src="{% static 'reports/js/jquery-ui.js' %}"></script>
 		<script src="{% static 'reports/js/tag-it.min.js' %}" type="text/javascript" charset="utf-8"></script>
 		<link href="{% static 'reports/css/jquery.tagit.css' %}" rel="stylesheet" type="text/css">
-		<title>Formulario Nutricional</title>
 		<script>
-			$(function() {
+			$(document).ready( function() {
 				$( "#doctor" ).autocomplete({
 				  source: "https://tataserver.herokuapp.com/api/search/doctors/",
 				  minLength: 2
