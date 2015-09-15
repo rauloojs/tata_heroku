@@ -85,7 +85,7 @@
 									<input id="paciente" name="nombre_pac" type="Text" placeholder="Nombre del paciente" autofocus required></input>	
 									<br>
 									<input type="date" name="fecha" id="date" required></input>
-									
+									<script>document.getElementById("date").value = new Date().toJSON().slice(0,10)</script>
 									<br><br>
 									<input name="estado_pac" id="status" type="Text" placeholder= "Diagnóstico" required></input>
 									<br>
