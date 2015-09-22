@@ -12,6 +12,7 @@ import json
 import requests
 import sys
 import datetime
+import time
 
 # Create your views here.
 @login_required
@@ -69,6 +70,7 @@ def send(request):
 		          	"id": psy.report.id,
 		          	"tipo": report_type,
 		            "fecha": consult_date,
+		            "timestamp": time.time(),
 		            "doctor": doc_name,
 		            "paciente": patient_name,
 		            "observaciones": observ,
@@ -100,6 +102,7 @@ def send(request):
 		          	"id": nut.report.id,
 		          	"tipo": report_type,
 		            "fecha": consult_date,
+		            "timestamp": time.time(),
 		            "doctor": doc_name,
 		            "paciente": patient_name,
 		            "observaciones": observ,
