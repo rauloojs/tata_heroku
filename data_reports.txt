@@ -1,0 +1,29 @@
+Data for pshycological report:
+	
+      "data": {
+      	"id": psy.report.id,
+      	"tipo": report_type,
+        "fecha": consult_date,
+        "doctor": doc_name,
+        "paciente": patient_name,
+        "observaciones": observ,
+        "sugerencias": suggest
+      }
+
+Data for nutritional report:
+
+      "data": {
+      	"id": nut.report.id,
+      	"tipo": report_type,
+        "fecha": consult_date,
+        "doctor": doc_name,
+        "paciente": patient_name,
+        "observaciones": observ,
+        "peso": weight,
+        "talla": height,
+        "presion": pressure,
+        "imc": imc,
+        "glucosa": glucosa,
+        "sugerencias": suggest,
+        "est_apetito": appetite,
+      }

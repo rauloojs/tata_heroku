@@ -23,12 +23,13 @@
 		<link href="{% static 'reports/css/jquery.tagit.css' %}" rel="stylesheet" type="text/css">
 		<script>
 			$(document).ready( function() {
+				console.log("HELLO")
 				$( "#doctor" ).autocomplete({
-				  source: "https://tataserver.herokuapp.com/api/search/doctors/",
+				  source: "http://localhost:5000/api/search/doctors/",
 				  minLength: 2
 				});
 				$( "#paciente" ).autocomplete({
-				  source: "https://tataserver.herokuapp.com/api/search/patients/",
+				  source: "http://localhost:5000/api/search/patients/",
 				  minLength: 2
 				});
 			});

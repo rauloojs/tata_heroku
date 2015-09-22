@@ -32,3 +32,17 @@ class NutReport(models.Model):
 	appetite = models.TextField()
 	imc = models.TextField()
 	suggest = models.TextField()
+
+class FisReport(models.Model):
+	report = models.OneToOneField(Report, primary_key=True)
+	ter_ocup = models.TextField()
+	ter_man = models.TextField()
+	masaje = models.TextField()
+	evol_pac = models.TextField()
+	recom = models.TextField()
+	
+
+class GerReport(models.Model):
+	report = models.OneToOneField(Report, primary_key=True)
+	tratamiento = models.TextField()
+	suggest = models.TextField()

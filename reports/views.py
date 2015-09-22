@@ -27,6 +27,14 @@ def nutritional(request, username):
 	return render_to_response('reports/nutritional.html', {'user': request.user, 'v_date': datetime.datetime.now()}, context_instance=RequestContext(request))
 
 @login_required
+def physiotherapy(request, username):
+	return render_to_response('reports/physiotherapy.html', {'user': request.user, 'v_date': datetime.datetime.now()}, context_instance=RequestContext(request))
+
+@login_required
+def geriatric(request, username):
+	return render_to_response('reports/geriatric.html', {'user': request.user, 'v_date': datetime.datetime.now()}, context_instance=RequestContext(request))
+
+@login_required
 def send(request):
 
 	# Obtenemos los campos comunes entre reportes
@@ -145,3 +153,9 @@ def results(request, rep_id, status):
 	elif report_type == "nutricional":
 		r = get_object_or_404(NutReport, pk=r.id)
 		return render_to_response('reports/nutresult.html', {'report': r, 'status': status, 'user': request.user}, context_instance=RequestContext(request))
+	elif report_type == "fisioterapia":
+		r = get_object_or_404(, pk=r.id)
+		return render_to_response('reports/fisresult.html', {'report': r, 'status': status, 'user': request.user}, context_instance=RequestContext(request))
+	elif report_type == "geriatric":
+		r = get_object_or_404(, pk=r.id)
+		return render_to_response('reports/gerresult.html', {'report': r, 'status': status, 'user': request.user}, context_instance=RequestContext(request))
