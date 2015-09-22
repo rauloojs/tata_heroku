@@ -154,8 +154,8 @@ def results(request, rep_id, status):
 		r = get_object_or_404(NutReport, pk=r.id)
 		return render_to_response('reports/nutresult.html', {'report': r, 'status': status, 'user': request.user}, context_instance=RequestContext(request))
 	elif report_type == "fisioterapia":
-		r = get_object_or_404(, pk=r.id)
+		r = get_object_or_404(FisReport, pk=r.id)
 		return render_to_response('reports/fisresult.html', {'report': r, 'status': status, 'user': request.user}, context_instance=RequestContext(request))
 	elif report_type == "geriatric":
-		r = get_object_or_404(, pk=r.id)
+		r = get_object_or_404(GerReport, pk=r.id)
 		return render_to_response('reports/gerresult.html', {'report': r, 'status': status, 'user': request.user}, context_instance=RequestContext(request))
